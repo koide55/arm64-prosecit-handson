@@ -1,0 +1,11 @@
+services:
+  handson:
+    build:
+      context: .
+    platform: linux/arm64
+    working_dir: /work
+    volumes:
+      - .:/work
+    stdin_open: true
+    tty: true
+
