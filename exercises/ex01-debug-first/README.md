@@ -6,6 +6,16 @@
 
 ## 手順
 
+このディレクトリの `code_example.s` は、観察用の最小コードです。スライドの `first.s` と同じ動きをします。
+
+```bash
+gcc -g -o /tmp/ex01 code_example.s
+/tmp/ex01
+echo $?
+```
+
+`examples/01-first/first.s` を使う場合は、リポジトリのルートで次を実行します。
+
 ```bash
 make build/first
 gdb build/first
@@ -40,4 +50,3 @@ echo $?
 ## 提出
 
 GDB の観察結果を3行程度で説明してください。
-

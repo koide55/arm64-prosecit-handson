@@ -41,5 +41,29 @@ test "$(./build/solutions/ex04)" = "1234abcd"
 test "$(./build/solutions/ex05)" = "abababababababab"
 test "$(./build/solutions/ex06)" = "5050"
 
-echo "examples ok"
+mkdir -p build/exercises
+gcc -g -o build/exercises/ex01 exercises/ex01-debug-first/code_example.s
+gcc -g -o build/exercises/ex02 exercises/ex02-add-sub-registers/code_example.s
+gcc -g -o build/exercises/ex03 exercises/ex03-original-program/code_example.s
+gcc -g -o build/exercises/ex04 exercises/ex04-large-immediate/code_example.s
+gcc -g -o build/exercises/ex05 exercises/ex05-bitmask-immediate/code_example.s
+gcc -g -o build/exercises/ex06 exercises/ex06-function-call-stack/code_example.s
 
+set +e
+./build/exercises/ex01 >/tmp/arm64-ex01.out 2>&1
+ex01_status=$?
+./build/exercises/ex02 >/tmp/arm64-ex02-empty.out 2>&1
+ex02_empty_status=$?
+./build/exercises/ex02 a b >/tmp/arm64-ex02-args.out 2>&1
+ex02_args_status=$?
+set -e
+test "$ex01_status" -eq 2
+test "$ex02_empty_status" -eq 1
+test "$ex02_args_status" -eq 5
+
+test "$(./build/exercises/ex03)" = "sum(1..10) = 55"
+test "$(./build/exercises/ex04)" = "0x1234abcd"
+test "$(./build/exercises/ex05)" = $'bitmask immediate: 0x1010101010101010\nmovz/movk value:    0xabababababababab'
+test "$(./build/exercises/ex06)" = "5050"
+
+echo "examples ok"

@@ -6,6 +6,16 @@
 
 ## 課題
 
+このディレクトリの `code_example.s` は、`0x1234abcd` を `movz` / `movk` で作って表示する例です。
+
+```bash
+gcc -g -o /tmp/ex04 code_example.s
+/tmp/ex04
+gdb /tmp/ex04
+```
+
+GDB では `bl printf` の前で止めて `print/x $x1` を確認してください。
+
 `work/ex04.s` を作成し、次を実現してください。
 
 1. `x1` に `0x1234abcd` を入れる
@@ -28,4 +38,3 @@ movk x1, #0x1234, LSL #16
 - ソースコード
 - 表示結果
 - `movz` と `movk` の違いの説明
-

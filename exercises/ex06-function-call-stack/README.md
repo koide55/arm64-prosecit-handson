@@ -6,6 +6,14 @@
 
 ## 課題
 
+このディレクトリの `code_example.s` は、`main` から `sum_to_n` を呼び出す完成例です。まずはそのまま動かし、GDB で `x30` と `sp` を観察してください。
+
+```bash
+gcc -g -o /tmp/ex06 code_example.s
+/tmp/ex06
+gdb /tmp/ex06
+```
+
 `work/ex06.s` を作成してください。
 
 条件:
@@ -47,4 +55,3 @@ info registers x0 x29 x30 sp
 - 実行結果
 - `bl` の直後に `x30` が何を表しているか
 - `finish` 実行後に `x0` が何になっているか
-

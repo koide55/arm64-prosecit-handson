@@ -6,6 +6,18 @@
 
 ## 手順
 
+このディレクトリの `code_example.s` は、`argc * 2 - 1` を `add` と `sub` で計算する例です。
+
+```bash
+gcc -g -o /tmp/ex02 code_example.s
+/tmp/ex02
+echo $?
+/tmp/ex02 a b
+echo $?
+```
+
+ビルド済みサンプル `add1` で `argc + 1` を見る場合は、リポジトリのルートで次を実行します。
+
 ```bash
 make build/add1
 ./build/add1
@@ -39,4 +51,3 @@ print $w2
 - 作成した `work/ex02.s`
 - 引数なし、引数2個、引数3個での終了ステータス
 - 使ったレジスタと命令の説明
-

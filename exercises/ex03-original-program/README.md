@@ -6,6 +6,15 @@
 
 ## 条件
 
+このディレクトリの `code_example.s` は、1から10まで足して `printf` で表示する例です。オリジナルプログラムを作る前に、ループ、条件分岐、`printf` 呼び出しの形を確認してください。
+
+```bash
+gcc -g -o /tmp/ex03 code_example.s
+/tmp/ex03
+```
+
+GDB で `x1` が合計、`x2` がカウンタとして変化する様子を観察できます。
+
 次の条件を満たすプログラムを `work/original.s` として作ってください。
 
 - `gcc -g -o original work/original.s` でビルドできる
@@ -27,4 +36,3 @@
 - 実行結果
 - GDB で観察したこと
 - 命令ごとの説明
-

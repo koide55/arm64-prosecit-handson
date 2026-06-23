@@ -8,7 +8,7 @@
 
 - `slides/`: 元スライド PDF
 - `examples/`: スライドの内容に対応する実行可能なサンプル
-- `exercises/`: 学生向け演習
+- `exercises/`: 学生向け演習。各演習に `code_example.s` があります
 - `solutions/`: 追加演習の参考解答
 - `docs/`: 講師用ガイドとチートシート
 - `scripts/`: 教材構成と実行例の検証スクリプト
@@ -74,4 +74,3 @@ Linux ARM64 上でサンプルをビルド・実行するチェック:
 ```bash
 scripts/test-examples.sh
 ```
-
