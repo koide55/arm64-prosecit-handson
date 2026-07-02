@@ -10,6 +10,8 @@ Linux ARM64 環境で作業してください。講師から SSH 先が配られ
 docker compose run --rm handson
 ```
 
+x64 Windows PC でも Docker Desktop（WSL 2 backend）があれば、上と同じコマンドで手元のPCだけで作業できます。詳しい手順は `README.md` の「実行環境」を参照してください。
+
 必要なツール:
 
 - `gcc`
