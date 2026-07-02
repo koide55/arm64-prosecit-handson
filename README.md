@@ -26,17 +26,46 @@
 
 ## 実行環境
 
-推奨環境は Linux ARM64 です。次のどちらかを使ってください。
+推奨環境は Linux ARM64 です。次のいずれかを使ってください。
 
 1. 講師が用意した ARM64 Linux 環境へ SSH する
 2. Apple Silicon Mac などで Docker Desktop を使い、Linux ARM64 コンテナを起動する
+3. x64 Windows PC で Docker Desktop を使い、QEMU エミュレーションで Linux ARM64 コンテナを起動する
 
-Docker を使う場合:
+Docker を使う場合（Mac/Linuxホスト）:
 
 ```bash
 docker compose build
 docker compose run --rm handson
 ```
+
+### x64 Windows + Docker Desktop の場合
+
+Docker Desktop は QEMU（binfmt_misc）を内蔵しており、x64 PC上でもホストのCPU種別を問わず ARM64 コンテナを透過的にエミュレーション実行できます。クラウド環境を用意しなくても、学生各自の Windows PC だけで完結します。
+
+事前準備:
+
+1. Windows 11（Home/Pro いずれも可）
+2. BIOS/UEFI で仮想化支援（Intel VT-x または AMD-V）を有効化
+3. [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/) をインストールし、WSL 2 backend を有効にする（インストーラーが自動でWSL2を設定する場合が多いです）
+
+PowerShell または WSL のターミナルから、リポジトリのルートで:
+
+```powershell
+docker compose build
+docker compose run --rm handson
+```
+
+初回ビルド時にコンテナ内で ARM64 バイナリが起動しない場合は、QEMU の binfmt ハンドラが未登録の可能性があります。その場合は一度だけ次を実行してください。
+
+```powershell
+docker run --privileged --rm tonistiigi/binfmt --install all
+```
+
+注意点:
+
+- QEMU エミュレーションのため、ネイティブ実行より体感で数倍遅くなりますが、この教材（数命令〜数十命令の GDB ステップ実行）の範囲では支障ありません。
+- コンテナに入った後の操作（`make all` や GDB の使い方）は Mac / Linux ホストの場合と同じです。
 
 コンテナ内で:
 
